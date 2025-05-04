@@ -1,20 +1,12 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AvailableVolume extends Model
+class AvailableValue extends Model
 {
-    protected $primaryKey = 'id_available_volumes';
-    protected $fillable = [
-        'id_product',
-        'id_img',
-        'real_price',
-        'sell_price',
-        'quantity',
-        'stock'
-    ];
+    protected $primaryKey = 'id_available_values';
+    protected $fillable = ['id_product', 'id_img', 'real_price', 'sell_price', 'quantity'];
 
     public function product()
     {

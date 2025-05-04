@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use App\Models\AvailableValue;
+use App\Models\Image;
+use App\Models\OrderItem;
 
 class Product extends Model
 {
@@ -18,15 +21,16 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'id_category');
     }
 
-    public function availableVolumes()
+    public function availableValues()
     {
-        return $this->hasMany(AvailableVolume::class, 'id_product');
+        return $this->hasMany(AvailableValue::class, 'id_product');
     }
 
     public function images()
     {
-        return $this->hasManyThrough(Image::class, AvailableVolume::class, 'id_product', 'id_img');
+        return $this->hasManyThrough(Image::class, AvailableValue::class, 'id_product', 'id_img');
     }
+
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class, 'id_product');
